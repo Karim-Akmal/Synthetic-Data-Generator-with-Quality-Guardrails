@@ -1,0 +1,25 @@
+tool: "Jira"
+
+num_reviews: 35
+
+personas:
+  - "Project Manager"
+  - "Senior Developer"
+  - "QA Tester"
+  - "Scrum Master"
+  - "UI/UX Developer"
+  - "Software Engineer"
+
+rating_distribution:
+  - 5
+  - 4
+  - 3
+  - 2
+  - 1
+
+models:
+  - provider: huggingface
+    model_name: meta-llama/Llama-3.2-1B-Instruct
+
+  - provider: openai
+    model_name: gpt-4o-mini
