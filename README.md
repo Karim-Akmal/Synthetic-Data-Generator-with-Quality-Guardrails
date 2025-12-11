@@ -16,7 +16,8 @@ This project generates **synthetic Jira reviews** using Large Language Models (L
 - [Analysis Methods](#analysis-methods)  
 - [Technical Implementation](#technical-implementation)  
 - [API Rate Limit Handling](#api-rate-limit-handling)  
-- [Quality Report](#quality-report)  
+- [Quality Report](#quality-report)
+- [Setup](#setup)
 - [CLI Usage](#cli-usage)
 - [YAML Configuration File](#yaml-configuration-file)
 - [Future Work](#future-work)  
@@ -139,6 +140,30 @@ Each persona affects tone, sentiment, vocabulary, and feature focus.
 ```
 
 ---
+## Setup
+
+### Prerequisites
+- Python 3.8+
+- API Keys for OpenAI and HuggingFace
+
+### Steps
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Karim-Akmal/Synthetic-Data-Generator-with-Quality-Guardrails.git
+cd jira-review-analysis
+```
+2. Install dependencies:
+ ```bash
+pip install -r requirements.txt
+```
+3. Configure Environment:
+```
+OPENAI_API_KEY=your_key_here
+HUGGINGFACE_API_KEY=your_key_here
+```
+
+---
 
 ## CLI Usage
 
@@ -197,10 +222,9 @@ models:
 - Compare sentiment distributions  
 - Use larger LLMs (LLaMA-3 8B, GPT-4o)  
 - Build dashboards for visualization  
-- Extract topics or clusters from reviews  
-- Compute **average frequency of words** across reviews
-- Analyze **sentiment and tone** of each review
-
+- Extract topics or clusters from reviews
+- Compute average frequency of words across reviews (these steps are essential for guardrail checks to pass only the proper reviews)
+- Analyze sentiment and tone of each review (these steps are essential for guardrail checks to pass only the proper reviews)
 ---
 
 ## License  
