@@ -17,7 +17,8 @@ This project generates **synthetic Jira reviews** using Large Language Models (L
 - [Technical Implementation](#technical-implementation)  
 - [API Rate Limit Handling](#api-rate-limit-handling)  
 - [Quality Report](#quality-report)  
-- [CLI Usage](#cli-usage)  
+- [CLI Usage](#cli-usage)
+- [YAML Configuration File](#yaml-configuration-file)
 - [Future Work](#future-work)  
 - [License](#license)  
 
@@ -128,18 +129,14 @@ Each persona affects tone, sentiment, vocabulary, and feature focus.
 ### Role Distribution (%)
 
 **Real Reviews**
-{'Software Developer': 10.94, 'Data Warehouse Engineer': 1.56, 'IT Project Manager': 1.56,
-'Senior Software Engineer': 1.56, 'Product Manager': 1.56, 'QA Manager': 7.81,
-'Senior QA Engineer': 1.56, 'Project Manager': 12.5, 'Public Relations Specialist': 1.56,
-'Software Engineer': 14.06, 'QA Tester': 10.94, 'Senior Project Manager': 1.56,
-'Sr. Engineer': 1.56, 'Senior Software Developer': 1.56, 'Developer Associate': 1.56,
-'Scrum Master': 10.94, 'UI/UX Developer': 10.94, 'Developer': 6.25}
-
+``` js
+{'Software Developer': 10.94, 'Data Warehouse Engineer': 1.56, 'IT Project Manager': 1.56, 'Senior Software Engineer': 1.56, 'Product Manager': 1.56, 'QA Manager': 7.81, 'Senior QA Engineer': 1.56, 'Project Manager': 12.5, 'Public Relations Specialist': 1.56, 'Software Engineer': 14.06, 'QA Tester': 10.94, 'Senior Project Manager': 1.56, 'Sr. Engineer': 1.56, 'Senior Software Developer': 1.56, 'Developer Associate': 1.56, 'Scrum Master': 10.94, 'UI/UX Developer': 10.94, 'Developer': 6.25}
+```
 
 **Synthetic Reviews**
-{'Scrum Master': 18.13, 'Senior Developer': 17.22, 'Software Engineer': 15.75,
-'UI/UX Developer': 15.57, 'Project Manager': 15.2, 'QA Tester': 18.13}
-
+```js
+{'Scrum Master': 18.13, 'Senior Developer': 17.22, 'Software Engineer': 15.75, 'UI/UX Developer': 15.57, 'Project Manager': 15.2, 'QA Tester': 18.13}
+```
 
 ---
 
@@ -159,9 +156,41 @@ python from_json_to_csv.py
 ```bash
 python quality_guardrail.py
 ```
+---
+## YAML Configuration File
+
+The YAML file (`yaml_file.yaml`) defines the **parameters for generating synthetic reviews**. It includes the personas, number of reviews, and model settings.
+
+### Example `yaml_file.yaml`
+
+```tool: "Jira"
+
+num_reviews: 35
+
+personas:
+  - "Project Manager"
+  - "Senior Developer"
+  - "QA Tester"
+  - "Scrum Master"
+  - "UI/UX Developer"
+  - "Software Engineer"
+
+rating_distribution:
+  - 5
+  - 4
+  - 3
+  - 2
+  - 1
+
+models:
+  - provider: huggingface
+    model_name: meta-llama/Llama-3.2-1B-Instruct
+
+  - provider: openai
+    model_name: gpt-4o-mini
+```
 
 ---
-
 ## Future Work
 
 - Add more personas  
@@ -169,6 +198,8 @@ python quality_guardrail.py
 - Use larger LLMs (LLaMA-3 8B, GPT-4o)  
 - Build dashboards for visualization  
 - Extract topics or clusters from reviews  
+- Compute **average frequency of words** across reviews
+- Analyze **sentiment and tone** of each review
 
 ---
 
