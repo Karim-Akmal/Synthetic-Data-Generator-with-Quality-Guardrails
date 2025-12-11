@@ -127,6 +127,17 @@ Each persona affects tone, sentiment, vocabulary, and feature focus.
 | 2.0    | 3.12        | 17.77           |
 | 1.0    | -           | 18.86           |
 
+``` mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'xyChart': { 'plotColorPalette': 'hashtag#007ACC, hashtag#FF5733' } } } }%%
+xychart-beta
+ title "Rating Distribution Comparison (%)"
+ x-axis ["1.0", "2.0", "2.5", "3.0", "4.0", "4.5", "5.0"]
+ y-axis "Percentage" 0 --> 60
+ bar [0, 3.12, 1.56, 3.12, 9.38, 28.12, 54.69]
+ bar [18.86, 17.77, 0, 21.43, 20.33, 0, 21.61]
+```
+
+
 ### Role Distribution (%)
 
 **Real Reviews**
@@ -139,6 +150,20 @@ Each persona affects tone, sentiment, vocabulary, and feature focus.
 {'Scrum Master': 18.13, 'Senior Developer': 17.22, 'Software Engineer': 15.75, 'UI/UX Developer': 15.57, 'Project Manager': 15.2, 'QA Tester': 18.13}
 ```
 
+``` mermaid
+
+%%{init: {'theme': 'base', 'themeVariables': { 'pie1': 'hashtag#007ACC', 'pie2': 'hashtag#FF5733', 'pie3': 'hashtag#FFC300' } } }%%
+pie title Real Reviews Role Distribution
+ "Software Engineer" : 14.06
+ "Project Manager" : 12.5
+ "Software Developer" : 10.94
+ "QA Tester" : 10.94
+ "Scrum Master" : 10.94
+ "UI/UX Developer" : 10.94
+ "QA Manager" : 7.81
+ "Developer" : 6.25
+ "Others ( < 2% each)" : 15.62
+```
 ---
 ## Setup
 
@@ -159,8 +184,8 @@ pip install -r requirements.txt
 ```
 3. Configure Environment:
 ```
-OPENAI_API_KEY=your_key_here
-HUGGINGFACE_API_KEY=your_key_here
+export OPENAI_API_KEY="your_openai_key_here"
+export HUGGINGFACE_API_KEY="your_huggingface_key_here"
 ```
 
 ---
